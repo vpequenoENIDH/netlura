@@ -1,0 +1,720 @@
+/* ===========================================
+   VARIÁVEIS CSS PARA TEMAS (DARK/LIGHT MODE)
+   =========================================== */
+
+:root {
+    /* Tema Dark (padrão) */
+    --bg-primary: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    --bg-secondary: #0f0f0f;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --accent-primary: #e50914;
+    --accent-secondary: #ff8c00;
+    --border-color: #ffffff;
+    --shadow-color: rgba(229, 9, 20, 0.3);
+    --shadow-hover: rgba(229, 9, 20, 0.6);
+    --button-bg: transparent;
+    --button-hover: rgba(255, 255, 255, 0.1);
+}
+
+/* Tema Light */
+[data-theme="light"] {
+    --bg-primary: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    --bg-secondary: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #666666;
+    --accent-primary: #e50914;
+    --accent-secondary: #ff8c00;
+    --border-color: #000000;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --shadow-hover: rgba(0, 0, 0, 0.4);
+    --button-bg: #f8f9fa;
+    --button-hover: #e9ecef;
+}
+
+/* Reset global - Remove espaçamentos padrão e aplica border-box */
+* {
+    margin: 0; /* Remove margem padrão */
+    padding: 0; /* Remove preenchimento padrão */
+    box-sizing: border-box; /* Inclui padding/border na largura/altura total */
+}
+
+/* Estilo do corpo da página */
+body {
+    background: var(--bg-primary); /* Fundo dinâmico baseado no tema */
+    color: var(--text-primary); /* Cor do texto dinâmica */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna e legível */
+    min-height: 100vh; /* Altura mínima de 100% da viewpoint */
+    display: flex; /* Ativa flexbox para centralizar conteúdo */
+    align-items: center; /* Centraliza itens verticalmente */
+    justify-content: center; /* Centraliza itens horizontalmente */
+    padding: 20px; /* Espaço interno de 20px */
+    transition: background 0.3s ease, color 0.3s ease; /* Transições suaves */
+}
+
+/* Container principal */
+main {
+    width: 100%; /* Ocupa toda a largura disponível */
+    max-width: 1200px; /* Limita a largura máxima para melhor layout em telas grandes */
+}
+
+/* Cabeçalho com o título */
+header {
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 60px; /* Adiciona espaço abaixo do cabeçalho */
+}
+
+/* Título principal */
+header h1 {
+    font-size: 3rem; /* Tamanho de fonte grande e impactante */
+    font-weight: 700; /* Peso da fonte bold (750) */
+    letter-spacing: 1px; /* Espaço entre letras para efeito elegante */
+    text-transform: uppercase; /* Converte texto para maiúsculas */
+    background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%); /* Gradiente dinâmico */
+    -webkit-background-clip: text; /* Encaixa o fundo no texto (prefixo webkit) */
+    -webkit-text-fill-color: transparent; /* Torna o texto transparente para mostrar o gradiente */
+    background-clip: text; /* Encaixa o fundo no texto (padrão) */
+    margin-bottom: 10px; /* Espaço abaixo do título */
+}
+
+/* Container para grade de perfis */
+.profiles {
+    padding: 40px 20px; /* Espaço interno: 40px vertical, 20px horizontal */
+}
+
+/* Nav como container do grid */
+.profiles nav {
+    display: grid; /* Ativa o CSS Grid para layout responsivo */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Cria colunas que preenchem o espaço, mínimo 180px */
+    gap: 40px; /* Espaço entre itens da grade */
+    justify-items: center; /* Centraliza itens horizontalmente */
+}
+
+/* Remove marcadores das listas para manter aparência limpa */
+.profiles ul,
+.profiles ol,
+.profiles li {
+    list-style: none; /* Remove TODOS os marcadores de lista (bolinhas, números, etc.) */
+    list-style-type: none; /* Garante que nenhum tipo de marcador apareça */
+    margin: 0; /* Remove margem padrão */
+    padding: 0; /* Remove padding padrão */
+    display: contents; /* Permite que os filhos sejam posicionados diretamente no grid */
+}
+
+/* Estilos para cada perfil (agora são links) */
+.profiles .profile {
+    cursor: pointer; /* Muda o cursor para indicar elemento clicável */
+    transition: all 0.3s ease; /* Anima todas as mudanças de propriedade em 0.3s */
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: inherit; /* Herda cor do texto */
+    display: block; /* Links ocupam todo o espaço disponível */
+}
+
+/* Elemento figure (imagem com legenda) */
+.profiles .profile figure {
+    position: relative; /* Posiciona relative para potencial uso de elementos filhos */
+    margin: 0; /* Remove margem padrão do figure */
+}
+
+/* Estilo das imagens dos perfis */
+.profiles .profile img {
+    width: 180px; /* Largura da imagem */
+    height: 180px; /* Altura da imagem */
+    border-radius: 8px; /* Adiciona cantos arredondados */
+    object-fit: cover; /* Faz a imagem cobrir o espaço mantendo proporção */
+    box-shadow: 0 10px 30px var(--shadow-color); /* Sombra dinâmica baseada no tema */
+    transform: scale(1); /* Escala inicial normal */
+    transition: all 0.3s ease; /* Anima as mudanças em 0.3s */
+    border: 3px solid var(--border-color); /* Borda dinâmica */
+}
+
+/* Efeitos ao passar o mouse sobre a imagem */
+.profiles .profile:hover img {
+    transform: scale(1.1); /* Amplia a imagem em 10% */
+    box-shadow: 0 15px 40px var(--shadow-hover); /* Aumenta a intensidade da sombra */
+}
+
+/* Legenda do perfil (nome) */
+.profiles .profile figcaption {
+    text-align: center; /* Centraliza o texto */
+    margin-top: 15px; /* Espaço acima da legenda */
+    font-size: 1.1rem; /* Tamanho de fonte ligeiramente aumentado */
+    font-weight: 500; /* Peso médio da fonte */
+    letter-spacing: 0.5px; /* Espaço sutil entre letras */
+    opacity: 0.9; /* Ligeiramente transparente */
+    transition: all 0.3s ease; /* Anima as mudanças */
+}
+
+/* Efeitos ao passar o mouse sobre a legenda */
+.profiles .profile:hover figcaption {
+    color: var(--accent-primary); /* Muda a cor para vermelho Netflix */
+    opacity: 1; /* Torna o texto completamente opaco */
+    font-weight: 600; /* Aumenta um pouco o peso da fonte */
+}
+
+/* ===========================================
+   BOTÃO DE ALTERNÂNCIA DE TEMA
+   =========================================== */
+
+#theme-toggle {
+    position: fixed; /* Posicionamento fixo no canto superior direito */
+    top: 20px; /* Distância do topo */
+    right: 20px; /* Distância da direita */
+    background: transparent; /* Fundo transparente */
+    border: none; /* Remove borda */
+    border-radius: 0; /* Remove cantos arredondados */
+    width: auto; /* Largura automática */
+    height: auto; /* Altura automática */
+    cursor: pointer; /* Cursor de ponteiro */
+    padding: 8px; /* Pequeno padding para área clicável */
+    display: flex; /* Flexbox para centralizar ícones */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    transition: all 0.3s ease; /* Transições suaves */
+    z-index: 1000; /* Fica acima de outros elementos */
+    border-radius: 8px; /* Cantos levemente arredondados */
+    opacity: 0.8; /* Levemente transparente por padrão */
+}
+
+#theme-toggle:hover {
+    background: var(--button-hover); /* Fundo sutil ao passar o mouse */
+    transform: scale(1.1); /* Leve aumento */
+    filter: drop-shadow(0 2px 4px var(--shadow-color)); /* Sombra para destacar */
+    opacity: 1; /* Totalmente opaco no hover */
+}
+
+#theme-toggle svg {
+    width: 28px; /* Largura maior para melhor visibilidade */
+    height: 28px; /* Altura maior para melhor visibilidade */
+    transition: all 0.3s ease; /* Transições suaves para os ícones */
+    color: var(--text-primary); /* Cor dos ícones dinâmica */
+    stroke: var(--text-primary); /* Cor do stroke dinâmica */
+    fill: var(--text-primary); /* Cor do fill dinâmica */
+}
+
+#theme-toggle .sun-icon {
+    display: block; /* Sol visível por padrão (dark mode) */
+}
+
+#theme-toggle .moon-icon {
+    display: none; /* Lua escondida por padrão */
+}
+
+/* No light mode, mostra a lua e esconde o sol */
+[data-theme="light"] #theme-toggle .sun-icon {
+    display: none;
+}
+
+[data-theme="light"] #theme-toggle .moon-icon {
+    display: block;
+}
+
+/* ===========================================
+   RESPONSIVIDADE PARA DIFERENTES DISPOSITIVOS
+   =========================================== */
+
+/* Telas muito grandes (desktops 4K, TVs) - até 2560px */
+@media (max-width: 2560px) {
+    /* Mantém o layout otimizado para telas grandes */
+    main {
+        max-width: 1400px; /* Aumenta largura máxima para telas grandes */
+    }
+
+    /* Mantém o layout otimizado para telas grandes */
+    .profiles nav {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Perfis maiores em telas grandes */
+        gap: 50px; /* Mais espaço entre perfis */
+    }
+
+    .profiles .profile img {
+        width: 200px; /* Imagens maiores */
+        height: 200px; /* Imagens maiores */
+    }
+    }
+}
+
+/* Telas grandes (desktops) - até 1440px */
+@media (max-width: 1440px) {
+    /* Layout otimizado para desktops padrão */
+    main {
+        max-width: 1200px; /* Largura máxima padrão */
+    }
+
+    /* Layout otimizado para desktops padrão */
+    .profiles nav {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Perfis padrão */
+        gap: 40px; /* Espaçamento padrão */
+    }
+
+    .profiles .profile img {
+        width: 180px; /* Tamanho padrão */
+        height: 180px; /* Tamanho padrão */
+    }
+    }
+}
+
+/* Telas médias (laptops) - até 1024px */
+@media (max-width: 1024px) {
+    /* Ajustes para laptops */
+    header h1 {
+        font-size: 2.5rem; /* Título menor */
+        margin-bottom: 50px; /* Menos espaço abaixo */
+    }
+
+    /* Ajustes para laptops */
+    .profiles nav {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Perfis menores */
+        gap: 35px; /* Espaçamento reduzido */
+        padding: 30px 15px; /* Padding reduzido */
+    }
+
+    .profiles .profile img {
+        width: 160px; /* Imagens menores */
+        height: 160px; /* Imagens menores */
+    }
+
+    .profiles .profile figcaption {
+        font-size: 1rem; /* Fonte menor */
+        margin-top: 12px; /* Menos espaço acima */
+    }
+}
+
+/* Tablets grandes (iPad Pro, tablets Android) - até 768px */
+@media (max-width: 768px) {
+    /* Ajustes específicos para tablets */
+    body {
+        padding: 15px; /* Padding reduzido */
+    }
+
+    header h1 {
+        font-size: 2rem; /* Título ainda menor */
+        margin-bottom: 40px; /* Espaço reduzido */
+    }
+
+    /* Ajusta a grade de perfis para tablets */
+    .profiles nav {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Perfis compactos */
+        gap: 30px; /* Espaçamento menor */
+        padding: 25px 10px; /* Padding reduzido */
+    }
+
+    /* Ajusta tamanho das imagens em tablets */
+    .profiles .profile img {
+        width: 140px; /* Imagens menores */
+        height: 140px; /* Imagens menores */
+    }
+
+    /* Ajusta tamanho da legenda em tablets */
+    .profiles .profile figcaption {
+        font-size: 0.95rem; /* Fonte menor */
+        margin-top: 10px; /* Espaço reduzido */
+    }
+}
+
+/* Tablets pequenos e celulares grandes - até 640px */
+@media (max-width: 640px) {
+    /* Layout para dispositivos médios */
+    header h1 {
+        font-size: 1.8rem; /* Título compacto */
+        margin-bottom: 35px; /* Espaço menor */
+    }
+
+    /* Ajusta a grade para 3 colunas em dispositivos médios */
+    .profiles nav {
+        grid-template-columns: repeat(3, 1fr); /* Força 3 colunas */
+        gap: 25px; /* Espaçamento reduzido */
+        padding: 20px 15px; /* Padding menor */
+    }
+
+    /* Ajusta tamanho das imagens */
+    .profiles .profile img {
+        width: 130px; /* Imagens menores */
+        height: 130px; /* Imagens menores */
+    }
+
+    /* Ajusta legenda */
+    .profiles .profile figcaption {
+        font-size: 0.9rem; /* Fonte menor */
+        margin-top: 8px; /* Espaço mínimo */
+    }
+}
+
+/* Celulares padrão - até 480px */
+@media (max-width: 480px) {
+    /* Layout otimizado para celulares */
+    body {
+        padding: 10px; /* Padding mínimo */
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Título pequeno */
+        margin-bottom: 30px; /* Espaço reduzido */
+        letter-spacing: 0.5px; /* Espaçamento menor */
+    }
+
+    /* Ajusta a grade para 2 colunas em celulares */
+    .profiles nav {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas fixas */
+        gap: 20px; /* Espaçamento compacto */
+        padding: 15px 10px; /* Padding mínimo */
+    }
+
+    /* Reduz tamanho das imagens em celulares */
+    .profiles .profile img {
+        width: 120px; /* Imagens pequenas */
+        height: 120px; /* Imagens pequenas */
+    }
+
+    /* Ajusta legenda para celulares */
+    .profiles .profile figcaption {
+        font-size: 0.85rem; /* Fonte pequena */
+        margin-top: 8px; /* Espaço mínimo */
+        letter-spacing: 0.3px; /* Espaçamento reduzido */
+    }
+}
+
+/* Celulares pequenos - até 360px */
+@media (max-width: 360px) {
+    /* Layout para dispositivos muito pequenos */
+    body {
+        padding: 8px; /* Padding mínimo */
+    }
+
+    header h1 {
+        font-size: 1.3rem; /* Título muito pequeno */
+        margin-bottom: 25px; /* Espaço mínimo */
+    }
+
+    /* Layout para dispositivos muito pequenos */
+    .profiles nav {
+        grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas */
+        gap: 15px; /* Espaçamento mínimo */
+        padding: 10px 5px; /* Padding mínimo */
+    }
+
+    /* Imagens mínimas */
+    .profiles .profile img {
+        width: 100px; /* Imagens muito pequenas */
+        height: 100px; /* Imagens muito pequenas */
+    }
+
+    /* Fonte mínima */
+    .profiles .profile figcaption {
+        font-size: 0.8rem; /* Fonte muito pequena */
+        margin-top: 6px; /* Espaço mínimo */
+    }
+}
+
+/* Dispositivos muito pequenos - até 320px */
+@media (max-width: 320px) {
+    /* Layout de emergência para telas muito pequenas */
+    header h1 {
+        font-size: 1.2rem; /* Título mínimo */
+        margin-bottom: 20px; /* Espaço mínimo */
+    }
+
+    /* Layout de emergência para telas muito pequenas */
+    .profiles nav {
+        grid-template-columns: 1fr; /* Uma coluna apenas */
+        gap: 15px; /* Espaçamento mínimo */
+        padding: 10px 5px; /* Padding mínimo */
+    }
+
+    /* Imagens mínimas */
+    .profiles .profile img {
+        width: 90px; /* Imagens mínimas */
+        height: 90px; /* Imagens mínimas */
+    }
+
+    /* Fonte mínima */
+    .profiles .profile figcaption {
+        font-size: 0.75rem; /* Fonte mínima */
+        margin-top: 5px; /* Espaço mínimo */
+    }
+}
+
+/* ===========================================
+   ORIENTAÇÃO DE TELA (LANDSCAPE/PORTRAIT)
+   =========================================== */
+
+/* Tablets e celulares em landscape */
+@media (max-width: 1024px) and (orientation: landscape) {
+    /* Ajustes para orientação paisagem */
+    body {
+        padding: 10px; /* Padding reduzido */
+    }
+
+    header h1 {
+        font-size: 1.8rem; /* Título menor em landscape */
+        margin-bottom: 25px; /* Espaço reduzido */
+    }
+
+    /* Ajustes para orientação paisagem */
+    .profiles nav {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Mais perfis por linha */
+        gap: 20px; /* Espaçamento menor */
+        padding: 15px 10px; /* Padding reduzido */
+    }
+
+    .profiles .profile img {
+        width: 120px; /* Imagens menores */
+        height: 120px; /* Imagens menores */
+    }
+}
+
+/* Celulares em landscape */
+@media (max-width: 640px) and (orientation: landscape) {
+    /* Layout otimizado para celulares na horizontal */
+    header h1 {
+        font-size: 1.4rem; /* Título compacto */
+    }
+
+    /* Layout otimizado para celulares na horizontal */
+    .profiles nav {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Perfis ainda menores */
+        gap: 15px; /* Espaçamento mínimo */
+    }
+
+    .profiles .profile img {
+        width: 100px; /* Imagens pequenas */
+        height: 100px; /* Imagens pequenas */
+    }
+
+    .profiles .profile figcaption {
+        font-size: 0.8rem; /* Fonte pequena */
+    }
+}
+/* ---------- RODAPÉ COM AÇÕES SECUNDÁRIAS ---------- */
+
+footer {
+    margin-top: 20px; /* Espaço acima do rodapé */
+}
+
+/* ---------- MODAL GERENCIAR PERFIS ---------- */
+
+.modal-gerenciar {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Posicionamento fixo */
+    top: 0; /* Topo da tela */
+    left: 0; /* Esquerda da tela */
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+    z-index: 2000; /* Acima de todos os elementos */
+    border: none; /* Remove borda padrão */
+    padding: 0; /* Remove padding padrão */
+    overflow-y: auto; /* Scroll se necessário */
+}
+
+.modal-gerenciar[open] {
+    display: flex; /* Mostra quando [open] */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+}
+
+.modal-content {
+    background: var(--bg-secondary); /* Fundo baseado no tema */
+    color: var(--text-primary); /* Cor do texto baseada no tema */
+    padding: 40px; /* Espaço interno */
+    border-radius: 12px; /* Cantos arredondados */
+    max-width: 500px; /* Largura máxima */
+    width: 90%; /* Largura responsiva */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); /* Sombra */
+    position: relative; /* Para posicionar botão de fechar */
+}
+
+.modal-gerenciar h2 {
+    font-size: 1.8rem; /* Título grande */
+    margin-bottom: 30px; /* Espaço abaixo do título */
+    text-align: center; /* Centralizado */
+}
+
+/* Botão fechar (X) */
+.modal-fechar {
+    position: absolute; /* Posicionamento absoluto */
+    top: 15px; /* Distância do topo */
+    right: 15px; /* Distância da direita */
+    background: transparent; /* Sem fundo */
+    border: none; /* Sem borda */
+    color: var(--text-primary); /* Cor dinâmica */
+    font-size: 28px; /* Tamanho grande */
+    cursor: pointer; /* Cursor de clique */
+    transition: all 0.3s ease; /* Transição suave */
+    width: 40px; /* Largura */
+    height: 40px; /* Altura */
+    display: flex; /* Flexbox */
+    align-items: center; /* Centraliza */
+    justify-content: center; /* Centraliza */
+}
+
+.modal-fechar:hover {
+    transform: scale(1.2); /* Aumenta ao passar o mouse */
+    color: var(--accent-primary); /* Muda cor para destaque */
+}
+
+/* Seção de seleção do perfil */
+.modal-secao {
+    margin-bottom: 25px; /* Espaço abaixo */
+}
+
+.modal-secao label {
+    display: block; /* Exibe em bloco */
+    margin-bottom: 10px; /* Espaço abaixo */
+    font-weight: 500; /* Font weight médio */
+}
+
+.modal-secao select {
+    width: 100%; /* Largura total */
+    padding: 12px; /* Espaço interno */
+    border: 1px solid var(--border-color); /* Borda dinâmica */
+    border-radius: 6px; /* Cantos arredondados */
+    background: transparent; /* Fundo transparente */
+    color: var(--text-primary); /* Cor dinâmica */
+    font-size: 1rem; /* Tamanho do texto */
+    cursor: pointer; /* Cursor de clique */
+    transition: all 0.3s ease; /* Transição suave */
+}
+
+.modal-secao select:hover,
+.modal-secao select:focus {
+    border-color: var(--accent-primary); /* Borda em destaque */
+    outline: none; /* Remove outline padrão */
+}
+
+/* Formulário de edição */
+.form-editar {
+    display: none; /* Escondido por padrão */
+}
+
+.form-editar.ativo {
+    display: block; /* Mostra quando ativo */
+}
+
+.form-grupo {
+    margin-bottom: 20px; /* Espaço entre grupos */
+}
+
+.form-grupo label {
+    display: block; /* Exibe em bloco */
+    margin-bottom: 8px; /* Espaço abaixo do label */
+    font-weight: 500; /* Font weight médio */
+}
+
+.form-grupo input {
+    width: 100%; /* Largura total */
+    padding: 12px; /* Espaço interno */
+    border: 1px solid var(--border-color); /* Borda dinâmica */
+    border-radius: 6px; /* Cantos arredondados */
+    background: transparent; /* Fundo transparente */
+    color: var(--text-primary); /* Cor dinâmica */
+    font-size: 1rem; /* Tamanho do texto */
+    transition: all 0.3s ease; /* Transição suave */
+    box-sizing: border-box; /* Inclui padding na largura */
+}
+
+.form-grupo input:focus {
+    outline: none; /* Remove outline padrão */
+    border-color: var(--accent-primary); /* Borda em destaque */
+    box-shadow: 0 0 8px var(--accent-primary); /* Sombra em destaque */
+}
+
+/* Seção de pré-visualização */
+.form-preview {
+    background: rgba(255, 255, 255, 0.05); /* Fundo sutil */
+    padding: 20px; /* Espaço interno */
+    border-radius: 8px; /* Cantos arredondados */
+    margin: 20px 0; /* Espaço acima e abaixo */
+    text-align: center; /* Centralizado */
+}
+
+.form-preview p {
+    margin-bottom: 15px; /* Espaço abaixo */
+    font-weight: 500; /* Font weight médio */
+}
+
+.preview-perfil {
+    margin: 0; /* Remove margem */
+    display: flex; /* Flexbox */
+    flex-direction: column; /* Coluna */
+    align-items: center; /* Centraliza */
+}
+
+.preview-perfil img {
+    width: 120px; /* Largura */
+    height: 120px; /* Altura */
+    border-radius: 8px; /* Cantos arredondados */
+    object-fit: cover; /* Cobre o espaço */
+    margin-bottom: 10px; /* Espaço abaixo */
+    border: 2px solid var(--border-color); /* Borda dinâmica */
+}
+
+.preview-perfil figcaption {
+    margin: 0; /* Remove margem */
+    font-size: 1.1rem; /* Tamanho do texto */
+    font-weight: 500; /* Font weight médio */
+    color: var(--text-primary); /* Cor dinâmica */
+}
+
+/* Botões do formulário */
+.form-botoes {
+    display: flex; /* Flexbox */
+    gap: 15px; /* Espaço entre botões */
+    margin-top: 25px; /* Espaço acima */
+}
+
+.btn-salvar,
+.btn-cancelar {
+    flex: 1; /* Ocupa espaço igual */
+    padding: 12px 20px; /* Espaço interno */
+    font-size: 1rem; /* Tamanho do texto */
+    font-weight: 600; /* Font weight forte */
+    text-transform: uppercase; /* Maiúsculas */
+    cursor: pointer; /* Cursor de clique */
+    border-radius: 6px; /* Cantos arredondados */
+    transition: all 0.3s ease; /* Transição suave */
+    letter-spacing: 1px; /* Espaço entre letras */
+}
+
+.btn-salvar {
+    background: var(--accent-primary); /* Fundo em destaque */
+    border: 2px solid var(--accent-primary); /* Borda em destaque */
+    color: white; /* Texto branco */
+}
+
+.btn-salvar:hover {
+    background: transparent; /* Fundo transparente */
+    color: var(--accent-primary); /* Cor em destaque */
+    transform: scale(1.05); /* Ligeiro aumento */
+}
+
+.btn-cancelar {
+    background: transparent; /* Fundo transparente */
+    border: 2px solid var(--border-color); /* Borda dinâmica */
+    color: var(--text-primary); /* Cor dinâmica */
+}
+
+.btn-cancelar:hover {
+    background: var(--button-hover); /* Fundo em hover */
+    border-color: var(--accent-primary); /* Borda em destaque */
+    color: var(--accent-primary); /* Cor em destaque */
+}
+
+.botao-gerenciar {
+    background: transparent; /* Fundo transparente */
+    border: 1px solid grey; /* Borda cinza */
+    color: grey; /* Cor do texto cinza */
+    padding: 10px 30px; /* Espaço interno */
+    font-size: 1vw; /* Tamanho responsivo */
+    text-transform: uppercase; /* Maiúsculas */
+    letter-spacing: 2px; /* Espaço entre letras */
+    cursor: pointer; /* Cursor de clique */
+    font-weight: 200; /* Peso leve */
+    transition: all 0.3s; /* Transição suave */
+    display: block; /* Exibe como bloco */
+    margin: 20px auto; /* Centraliza horizontalmente e adiciona espaço vertical */
+}
+
+.botao-gerenciar:hover {
+    border-color: #e5e5e5;
+    color: #e5e5e5;
+}

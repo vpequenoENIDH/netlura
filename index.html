@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Netflix - Selecione um perfil para começar a assistir">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Quem está assistindo?</h1>
+        </header>
+
+        <section class="profiles">
+            <nav aria-label="Seleção de perfis de usuário">
+                <ul>
+                    <li>
+                        <a href="/catalogo/catalogo.html" class="profile">
+                            <figure>
+                                <img src="/assets/perfil1_raf.png" alt="Retrato digital de uma anjo loira com asas azuis e auréola de néon em uma biblioteca.">
+                                <figcaption>Qc</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/catalogo/catalogo.html" class="profile">
+                            <figure>
+                                <img src="/assets/perfil2_huntik.png" alt="Um jovem de olhos azuis com energia mágica nas mãos e o logo 'Huntik' no casaco, em uma biblioteca">
+                                <figcaption>Té</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/catalogo/catalogo.html" class="profile">
+                            <figure>
+                                <img src="/assets/perfil3_akari.png" alt="Retrato digital de uma guerreira ninja de cabelos pretos em uma biblioteca, com as mãos envoltas em aura azul brilhante.">
+                                <figcaption>Pinha</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/catalogo/catalogo.html" class="profile">
+                            <figure>
+                                <img src="/assets/perfil4_Carl.png" alt="Retrato digital de um homem idoso em estilo 3D, com óculos e gravata borboleta, envolto por círculos de energia azul brilhante.">
+                                <figcaption>Jr</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+
+        <!-- Modal para gerenciar/editar perfis -->
+        <dialog id="modal-gerenciar" class="modal-gerenciar">
+            <div class="modal-content">
+                <button type="button" class="modal-fechar" aria-label="Fechar modal">&times;</button>
+                
+                <h2>Gerenciar Perfis</h2>
+
+                <!-- Seleção do perfil a editar -->
+                <div class="modal-secao">
+                    <label for="selecionar-perfil">Escolha um perfil para editar:</label>
+                    <select id="selecionar-perfil">
+                        <option value="">-- Selecione um perfil --</option>
+                        <option value="0">Qc</option>
+                        <option value="1">Té</option>
+                        <option value="2">Pinha</option>
+                        <option value="3">Jr</option>
+                    </select>
+                </div>
+
+                <!-- Formulário de edição -->
+                <form id="form-editar-perfil" class="form-editar">
+                    <div class="form-grupo">
+                        <label for="nome-perfil">Nome do Perfil:</label>
+                        <input type="text" id="nome-perfil" placeholder="Digite o novo nome" required>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="foto-perfil">URL da Foto:</label>
+                        <input type="text" id="foto-perfil" placeholder="Cole a URL da imagem">
+                    </div>
+
+                    <div class="form-preview">
+                        <p>Pré-visualização:</p>
+                        <figure class="preview-perfil">
+                            <img id="preview-img" src="" alt="Pré-visualização do perfil">
+                            <figcaption id="preview-nome">Nome</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="form-botoes">
+                        <button type="submit" class="btn-salvar">Salvar Alterações</button>
+                        <button type="button" class="btn-cancelar">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+
+        <footer>
+            <button type="button" class="botao-gerenciar">Gerenciar perfis</button>
+        </footer>
+    </main>
+</body>
+</html>
