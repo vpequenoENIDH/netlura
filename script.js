@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
 class ProfileManager {
     constructor() {
         this.perfisOriginais = [
-            { nome: 'Qc', foto: '/assets/perfil1_raf.png' },
-            { nome: 'Té', foto: '/assets/perfil2_huntik.png' },
-            { nome: 'Pinha', foto: '/assets/perfil3_akari.png' },
-            { nome: 'Jr', foto: '/assets/perfil4_Carl.png' }
+            { nome: 'Qc', foto: 'assets/perfil1_raf.png' },
+            { nome: 'Té', foto: 'assets/perfil2_huntik.png' },
+            { nome: 'Pinha', foto: 'assets/perfil3_akari.png' },
+            { nome: 'Jr', foto: 'assets/perfil4_Carl.png' }
         ];
         
         // Carrega perfis salvos do localStorage ou usa os originais
